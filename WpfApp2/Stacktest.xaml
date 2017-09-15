@@ -1,0 +1,11 @@
+﻿<Window x:Class="WpfApp2.Stacktest"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Stacktest" Height="725" Width="1450" WindowStartupLocation="CenterOwner" Left="-8" Top="0">
+    <Window.Background>
+        <ImageBrush ImageSource="images/blog.jpg"/>
+    </Window.Background>
+    <Grid>
+      
+    </Grid>
+</Window>

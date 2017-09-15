@@ -1,0 +1,107 @@
+﻿<UserControl x:Class="WpfApp2.NursePanelUc"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+              Height="700" Width="1405">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.04*"/>
+            <ColumnDefinition Width="0.50*"/>
+            <ColumnDefinition Width="0.04*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="650"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.ColumnSpan="3" Grid.Row="0">
+            <Menu Width="Auto" Height="30" VerticalAlignment="Top">
+                <MenuItem Header="_File" FontFamily="Time New Roman" FontSize="15" Height="30">
+                    <MenuItem Name="filelogoutnurse" Header="Logout" Click="filelogoutnurse_Click"/>
+                </MenuItem>
+                <MenuItem Header="_Help" FontFamily="Time New Roman" FontSize="15" Height="30">
+                    <MenuItem Name="helpabout" Header="About" />
+                </MenuItem>
+            </Menu>
+        </Grid>
+        <TabControl Grid.ColumnSpan="3" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" TabStripPlacement="Top" Background="{x:Null}" Height="669">
+            <TabItem Header="My Room" Width="150" Height="40" FontFamily="Time New Roman" FontSize="15" Background="{x:Null}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.15*"/>
+                        <ColumnDefinition Width="0.15*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="250"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Column="0" Grid.Row="0">
+                        <Label Content="Search Record By" Width="150" Height="30" HorizontalAlignment="Right"/>
+                    </Grid>
+                    <Grid Grid.Column="1" Grid.Row="0">
+                        <ComboBox x:Name="searchroomcombo_nurse" Width="300" Height="30" HorizontalAlignment="Left">
+                            <ComboBoxItem Content="Room No"/>
+                            <ComboBoxItem Content="Total beds"/>
+                            <ComboBoxItem Content="Available beds"/>
+                        </ComboBox>
+                    </Grid>
+                    <Grid Grid.Column="1" Grid.Row="1">
+                        <TextBox x:Name="searchroomtxt_nurse"  Width="300" Height="30" HorizontalAlignment="Left" TextChanged="searchroomtxt_nurse_TextChanged"/>
+                    </Grid>
+                    <Grid Grid.ColumnSpan="2" Grid.Row="2">
+                        <DataGrid CanUserAddRows="False" SelectionMode="Single" MaxWidth="900" AutoGenerateColumns="False" x:Name="dataGrid_MyRoom" HorizontalAlignment="Center" VerticalAlignment="Top" Height="189" Width="800" >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Width="100" Header="Room No"  Binding="{Binding room_id}"/>
+                                <DataGridTextColumn Width="100" Header="Total Beds"  Binding="{Binding totalbeds}"/>
+                                <DataGridTextColumn Width="100" Header="Available Beds" Binding="{Binding availbeds}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="My Patient" Width="150" Height="40" FontFamily="Time New Roman" FontSize="15" Background="{x:Null}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.15*"/>
+                        <ColumnDefinition Width="0.15*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="250"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Column="0" Grid.Row="0">
+                        <Label Content="Search Record By" Width="150" Height="30" HorizontalAlignment="Right"/>
+                    </Grid>
+                    <Grid Grid.Column="1" Grid.Row="0">
+                        <ComboBox x:Name="searchpatcombo_nurse" Width="300" Height="30" HorizontalAlignment="Left">
+                            <ComboBoxItem Content="Name"/>
+                            <ComboBoxItem Content="Gender"/>
+                            <ComboBoxItem Content="Room No"/>
+                        </ComboBox>
+                    </Grid>
+                    <Grid Grid.Column="1" Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="31*"/>
+                            <ColumnDefinition Width="22*"/>
+                            <ColumnDefinition Width="348*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox x:Name="searchpattxt_nurse"  Width="300" Height="30" HorizontalAlignment="Left" Grid.ColumnSpan="3" Margin="0,6,0,5" TextChanged="searchpattxt_nurse_TextChanged"/>
+                    </Grid>
+                    <Grid Grid.ColumnSpan="2" Grid.Row="2">
+                        <DataGrid CanUserAddRows="False" SelectionMode="Single" MaxWidth="900" AutoGenerateColumns="False" x:Name="dataGrid_MyPatient" HorizontalAlignment="Center" VerticalAlignment="Top" Height="189" Width="800">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Width="80" Header="Name" Binding="{Binding Patient.pat_name}"/>
+                                <DataGridTextColumn Width="80" Header="Gender" Binding="{Binding Patient.pat_gender}"/>
+                                <DataGridTextColumn Width="100" Header="Date of Birth" Binding="{Binding Patient.pat_dob}"/>
+                                <DataGridTextColumn Width="80" Header="Type" Binding="{Binding Patient.pat_type}"/>
+                                <DataGridTextColumn Width="80" Header="Room No" Binding="{Binding Patient.Room.room_id}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>

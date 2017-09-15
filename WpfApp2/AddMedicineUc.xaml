@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="WpfApp2.AddMedicineUc"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+            Height="200" Width="350">
+    <UserControl.Resources>
+        <BitmapImage x:Key="bitSaveImage" UriSource="images/save.jpg"/>
+        <Image x:Key="saveImage" x:Shared="false" Source="{StaticResource bitSaveImage}"/>
+        <BitmapImage x:Key="bitCancelImage" UriSource="images/cancel.jpg"/>
+        <Image x:Key="cancelImage" x:Shared="false" Opacity="0.9" Source="{StaticResource bitCancelImage}"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.35*"/>
+            <ColumnDefinition Width="0.35*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right">
+            <Label Content="Medicine Name" HorizontalAlignment="Center" Height="30"/>
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left">
+            <TextBox x:Name="mednametxt" HorizontalAlignment="Center" Height="30" Width="165" VerticalContentAlignment="Center"/>
+        </Grid>
+        <Grid Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right">
+            <Label Content="Price" HorizontalAlignment="Center" Height="30" Width="100" HorizontalContentAlignment="Center"/>
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left">
+            <xctk:IntegerUpDown x:Name="medpricetxt" Minimum="0" HorizontalAlignment="Center" Height="30" Width="165"/>
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left">
+            <Button x:Name="btn_Save" Content="{StaticResource saveImage}" VerticalAlignment="Center" BorderBrush="{x:Null}" Background="{x:Null}" Click="btn_Save_Click" Margin="0,0,80,1"/>
+            <Button x:Name="btn_Cancel" Content="{StaticResource cancelImage}" Width="50" HorizontalAlignment="Center" BorderBrush="{x:Null}" Background="{x:Null}" Margin="80,0,0,0" Click="btn_Cancel_Click"/>
+        </Grid>
+    </Grid>
+</UserControl>

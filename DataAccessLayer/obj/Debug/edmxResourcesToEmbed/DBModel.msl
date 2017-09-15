@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HospitalManagementSystemModelStoreContainer" CdmEntityContainer="HospitalManagementSystemEntities">
+    <EntitySetMapping Name="Bills">
+      <EntityTypeMapping TypeName="HospitalManagementSystemModel.Bill">
+        <MappingFragment StoreEntitySet="Bill">
+          <ScalarProperty Name="bill_id" ColumnName="bill_id" />
+          <ScalarProperty Name="pat_id" ColumnName="pat_id" />
+          <ScalarProperty Name="doctor_charge" ColumnName="doctor_charge" />
+          <ScalarProperty Name="med_charge" ColumnName="med_charge" />
+          <ScalarProperty Name="room_charge" ColumnName="room_charge" />
+          <ScalarProperty Name="no_of_days" ColumnName="no_of_days" />
+          <ScalarProperty Name="total_bill" ColumnName="total_bill" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="HospitalManagementSystemModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="cat_id" ColumnName="cat_id" />
+          <ScalarProperty Name="cat_name" ColumnName="cat_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IndoorPatients">
+      <EntityTypeMapping TypeName="HospitalManagementSystemModel.IndoorPatient">
+        <MappingFragment StoreEntitySet="IndoorPatient">
+          <ScalarProperty Name="indpat_id" ColumnName="indpat_id" />
+          <ScalarProperty Name="indpat_disease" ColumnName="indpat_disease" />
+          <ScalarProperty Name="indpat_status" ColumnName="indpat_status" />
+          <ScalarProperty Name="room_id" ColumnName="room_id" />
+          <ScalarProperty Name="pat_id" ColumnName="pat_id" />
+          <ScalarProperty Name="admit_date" ColumnName="admit_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Medicines">
+      <EntityTypeMapping TypeName="HospitalManagementSystemModel.Medicine">
+        <MappingFragment StoreEntitySet="Medicine">
+          <ScalarProperty Name="med_id" ColumnName="med_id" />
+          <ScalarProperty Name="med_name" ColumnName="med_name" />
+          <ScalarProperty Name="med_price" ColumnName="med_price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Nurses">
+      <EntityTypeMapping TypeName="HospitalManagementSystemModel.Nurse">
+        <MappingFragment StoreEntitySet="Nurse">
+          <ScalarProperty Name="nurse_id" ColumnName="nurse_id" />
+          <ScalarProperty Name="nurse_experience" ColumnName="nurse_experience" />
+          <ScalarProperty Name="emp_id" ColumnName="emp_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prescriptions">
+      <EntityTypeMapping TypeName="HospitalManagementSystemModel.Prescription">
+        <MappingFragment StoreEntitySet="Prescription">
+          <ScalarProperty Name="presc_id" ColumnName="presc_id" />
+          <ScalarProperty Name="presc_dosage" ColumnName="presc_dosage" />
+          <ScalarProperty Name="med_id" ColumnName="med_id" />
+          <ScalarProperty Name="pat_id" ColumnName="pat_id" />
+          <ScalarProperty Name="doc_id" ColumnName="doc_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="HospitalManagementSystemModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="user_name" ColumnName="user_name" />
+          <ScalarProperty Name="user_password" ColumnName="user_password" />
+          <ScalarProperty Name="user_type" ColumnName="user_type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="HospitalManagementSystemModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Patients">
+      <EntityTypeMapping TypeName="HospitalManagementSystemModel.Patient">
+        <MappingFragment StoreEntitySet="Patient">
+          <ScalarProperty Name="doc_id" ColumnName="doc_id" />
+          <ScalarProperty Name="cat_id" ColumnName="cat_id" />
+          <ScalarProperty Name="pat_type" ColumnName="pat_type" />
+          <ScalarProperty Name="pat_dob" ColumnName="pat_dob" />
+          <ScalarProperty Name="pat_gender" ColumnName="pat_gender" />
+          <ScalarProperty Name="pat_name" ColumnName="pat_name" />
+          <ScalarProperty Name="pat_id" ColumnName="pat_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Doctors">
+      <EntityTypeMapping TypeName="HospitalManagementSystemModel.Doctor">
+        <MappingFragment StoreEntitySet="Doctor">
+          <ScalarProperty Name="emp_id" ColumnName="emp_id" />
+          <ScalarProperty Name="cat_id" ColumnName="cat_id" />
+          <ScalarProperty Name="doc_id" ColumnName="doc_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="HospitalManagementSystemModel.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="emp_phone" ColumnName="emp_phone" />
+          <ScalarProperty Name="emp_gender" ColumnName="emp_gender" />
+          <ScalarProperty Name="emp_salary" ColumnName="emp_salary" />
+          <ScalarProperty Name="emp_dob" ColumnName="emp_dob" />
+          <ScalarProperty Name="emp_lastname" ColumnName="emp_lastname" />
+          <ScalarProperty Name="emp_firstname" ColumnName="emp_firstname" />
+          <ScalarProperty Name="emp_id" ColumnName="emp_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rooms">
+      <EntityTypeMapping TypeName="HospitalManagementSystemModel.Room">
+        <MappingFragment StoreEntitySet="Room">
+          <ScalarProperty Name="availbeds" ColumnName="availbeds" />
+          <ScalarProperty Name="nurse_id" ColumnName="nurse_id" />
+          <ScalarProperty Name="totalbeds" ColumnName="totalbeds" />
+          <ScalarProperty Name="room_id" ColumnName="room_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

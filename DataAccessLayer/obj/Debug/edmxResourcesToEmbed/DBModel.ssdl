@@ -1,0 +1,354 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HospitalManagementSystemModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="HospitalManagementSystemModelStoreContainer">
+    <EntitySet Name="Bill" EntityType="HospitalManagementSystemModel.Store.Bill" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Category" EntityType="HospitalManagementSystemModel.Store.Category" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Doctor" EntityType="HospitalManagementSystemModel.Store.Doctor" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Employee" EntityType="HospitalManagementSystemModel.Store.Employee" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="IndoorPatient" EntityType="HospitalManagementSystemModel.Store.IndoorPatient" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Medicine" EntityType="HospitalManagementSystemModel.Store.Medicine" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Nurse" EntityType="HospitalManagementSystemModel.Store.Nurse" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Patient" EntityType="HospitalManagementSystemModel.Store.Patient" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Prescription" EntityType="HospitalManagementSystemModel.Store.Prescription" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Room" EntityType="HospitalManagementSystemModel.Store.Room" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysdiagrams" EntityType="HospitalManagementSystemModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="User" EntityType="HospitalManagementSystemModel.Store.User" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Bill_Patid" Association="HospitalManagementSystemModel.Store.FK_Bill_Patid">
+      <End Role="Patient" EntitySet="Patient" />
+      <End Role="Bill" EntitySet="Bill" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Doctor_catid" Association="HospitalManagementSystemModel.Store.FK_Doctor_catid">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Doctor" EntitySet="Doctor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Doctor_Empid" Association="HospitalManagementSystemModel.Store.FK_Doctor_Empid">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Doctor" EntitySet="Doctor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_userid" Association="HospitalManagementSystemModel.Store.FK_Employee_userid">
+      <End Role="User" EntitySet="User" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IndoorPatient_Patid" Association="HospitalManagementSystemModel.Store.FK_IndoorPatient_Patid">
+      <End Role="Patient" EntitySet="Patient" />
+      <End Role="IndoorPatient" EntitySet="IndoorPatient" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IndoorPatient_roomid" Association="HospitalManagementSystemModel.Store.FK_IndoorPatient_roomid">
+      <End Role="Room" EntitySet="Room" />
+      <End Role="IndoorPatient" EntitySet="IndoorPatient" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Nurse_empid" Association="HospitalManagementSystemModel.Store.FK_Nurse_empid">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Nurse" EntitySet="Nurse" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Patient_catid" Association="HospitalManagementSystemModel.Store.FK_Patient_catid">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Patient" EntitySet="Patient" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Patient_doc_id" Association="HospitalManagementSystemModel.Store.FK_Patient_doc_id">
+      <End Role="Doctor" EntitySet="Doctor" />
+      <End Role="Patient" EntitySet="Patient" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prescription_docid" Association="HospitalManagementSystemModel.Store.FK_Prescription_docid">
+      <End Role="Doctor" EntitySet="Doctor" />
+      <End Role="Prescription" EntitySet="Prescription" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prescription_medid" Association="HospitalManagementSystemModel.Store.FK_Prescription_medid">
+      <End Role="Medicine" EntitySet="Medicine" />
+      <End Role="Prescription" EntitySet="Prescription" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prescription_Patid" Association="HospitalManagementSystemModel.Store.FK_Prescription_Patid">
+      <End Role="Patient" EntitySet="Patient" />
+      <End Role="Prescription" EntitySet="Prescription" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Room_nurseid" Association="HospitalManagementSystemModel.Store.FK_Room_nurseid">
+      <End Role="Nurse" EntitySet="Nurse" />
+      <End Role="Room" EntitySet="Room" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Bill">
+    <Key>
+      <PropertyRef Name="bill_id" />
+    </Key>
+    <Property Name="bill_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="pat_id" Type="int" Nullable="false" />
+    <Property Name="doctor_charge" Type="money" Nullable="false" />
+    <Property Name="med_charge" Type="money" Nullable="false" />
+    <Property Name="room_charge" Type="money" />
+    <Property Name="no_of_days" Type="int" />
+    <Property Name="total_bill" Type="money" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="cat_id" />
+    </Key>
+    <Property Name="cat_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="cat_name" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Doctor">
+    <Key>
+      <PropertyRef Name="doc_id" />
+    </Key>
+    <Property Name="doc_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="cat_id" Type="int" Nullable="false" />
+    <Property Name="emp_id" Type="int" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="emp_id" />
+    </Key>
+    <Property Name="emp_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="emp_firstname" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="emp_lastname" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="emp_dob" Type="datetime" Nullable="false" />
+    <Property Name="emp_salary" Type="int" Nullable="false" />
+    <Property Name="emp_gender" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="emp_phone" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="user_id" Type="int" />
+  </EntityType>
+  <EntityType Name="IndoorPatient">
+    <Key>
+      <PropertyRef Name="indpat_id" />
+    </Key>
+    <Property Name="indpat_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="indpat_disease" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="indpat_status" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="room_id" Type="int" Nullable="false" />
+    <Property Name="pat_id" Type="int" Nullable="false" />
+    <Property Name="admit_date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Medicine">
+    <Key>
+      <PropertyRef Name="med_id" />
+    </Key>
+    <Property Name="med_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="med_name" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="med_price" Type="money" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Nurse">
+    <Key>
+      <PropertyRef Name="nurse_id" />
+    </Key>
+    <Property Name="nurse_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="nurse_experience" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="emp_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Patient">
+    <Key>
+      <PropertyRef Name="pat_id" />
+    </Key>
+    <Property Name="pat_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="pat_name" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="pat_gender" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="pat_dob" Type="datetime" Nullable="false" />
+    <Property Name="pat_type" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="cat_id" Type="int" Nullable="false" />
+    <Property Name="doc_id" Type="int" />
+  </EntityType>
+  <EntityType Name="Prescription">
+    <Key>
+      <PropertyRef Name="presc_id" />
+    </Key>
+    <Property Name="presc_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="presc_dosage" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="med_id" Type="int" Nullable="false" />
+    <Property Name="pat_id" Type="int" Nullable="false" />
+    <Property Name="doc_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Room">
+    <Key>
+      <PropertyRef Name="room_id" />
+    </Key>
+    <Property Name="room_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="totalbeds" Type="int" Nullable="false" />
+    <Property Name="nurse_id" Type="int" Nullable="false" />
+    <Property Name="availbeds" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="user_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="user_name" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="user_password" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="user_type" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Bill_Patid">
+    <End Role="Patient" Type="HospitalManagementSystemModel.Store.Patient" Multiplicity="1" />
+    <End Role="Bill" Type="HospitalManagementSystemModel.Store.Bill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="pat_id" />
+      </Principal>
+      <Dependent Role="Bill">
+        <PropertyRef Name="pat_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Doctor_catid">
+    <End Role="Category" Type="HospitalManagementSystemModel.Store.Category" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Doctor" Type="HospitalManagementSystemModel.Store.Doctor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="cat_id" />
+      </Principal>
+      <Dependent Role="Doctor">
+        <PropertyRef Name="cat_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Doctor_Empid">
+    <End Role="Employee" Type="HospitalManagementSystemModel.Store.Employee" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Doctor" Type="HospitalManagementSystemModel.Store.Doctor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="emp_id" />
+      </Principal>
+      <Dependent Role="Doctor">
+        <PropertyRef Name="emp_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_userid">
+    <End Role="User" Type="HospitalManagementSystemModel.Store.User" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Employee" Type="HospitalManagementSystemModel.Store.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IndoorPatient_Patid">
+    <End Role="Patient" Type="HospitalManagementSystemModel.Store.Patient" Multiplicity="1" />
+    <End Role="IndoorPatient" Type="HospitalManagementSystemModel.Store.IndoorPatient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="pat_id" />
+      </Principal>
+      <Dependent Role="IndoorPatient">
+        <PropertyRef Name="pat_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IndoorPatient_roomid">
+    <End Role="Room" Type="HospitalManagementSystemModel.Store.Room" Multiplicity="1" />
+    <End Role="IndoorPatient" Type="HospitalManagementSystemModel.Store.IndoorPatient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Room">
+        <PropertyRef Name="room_id" />
+      </Principal>
+      <Dependent Role="IndoorPatient">
+        <PropertyRef Name="room_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Nurse_empid">
+    <End Role="Employee" Type="HospitalManagementSystemModel.Store.Employee" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Nurse" Type="HospitalManagementSystemModel.Store.Nurse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="emp_id" />
+      </Principal>
+      <Dependent Role="Nurse">
+        <PropertyRef Name="emp_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Patient_catid">
+    <End Role="Category" Type="HospitalManagementSystemModel.Store.Category" Multiplicity="1" />
+    <End Role="Patient" Type="HospitalManagementSystemModel.Store.Patient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="cat_id" />
+      </Principal>
+      <Dependent Role="Patient">
+        <PropertyRef Name="cat_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Patient_doc_id">
+    <End Role="Doctor" Type="HospitalManagementSystemModel.Store.Doctor" Multiplicity="0..1" />
+    <End Role="Patient" Type="HospitalManagementSystemModel.Store.Patient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="doc_id" />
+      </Principal>
+      <Dependent Role="Patient">
+        <PropertyRef Name="doc_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prescription_docid">
+    <End Role="Doctor" Type="HospitalManagementSystemModel.Store.Doctor" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Prescription" Type="HospitalManagementSystemModel.Store.Prescription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="doc_id" />
+      </Principal>
+      <Dependent Role="Prescription">
+        <PropertyRef Name="doc_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prescription_medid">
+    <End Role="Medicine" Type="HospitalManagementSystemModel.Store.Medicine" Multiplicity="1" />
+    <End Role="Prescription" Type="HospitalManagementSystemModel.Store.Prescription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Medicine">
+        <PropertyRef Name="med_id" />
+      </Principal>
+      <Dependent Role="Prescription">
+        <PropertyRef Name="med_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prescription_Patid">
+    <End Role="Patient" Type="HospitalManagementSystemModel.Store.Patient" Multiplicity="1" />
+    <End Role="Prescription" Type="HospitalManagementSystemModel.Store.Prescription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="pat_id" />
+      </Principal>
+      <Dependent Role="Prescription">
+        <PropertyRef Name="pat_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Room_nurseid">
+    <End Role="Nurse" Type="HospitalManagementSystemModel.Store.Nurse" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Room" Type="HospitalManagementSystemModel.Store.Room" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Nurse">
+        <PropertyRef Name="nurse_id" />
+      </Principal>
+      <Dependent Role="Room">
+        <PropertyRef Name="nurse_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

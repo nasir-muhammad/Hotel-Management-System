@@ -1,0 +1,11 @@
+﻿<Window x:Class="WpfApp2.Stack"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Stack" Height="500" Width="500">
+    <WrapPanel Orientation="Vertical">
+        <Ellipse Fill="Red" Width="100" Height="80" ></Ellipse>
+        <Ellipse Fill="Green" Width="100" Height="80" ></Ellipse>
+        <Ellipse Fill="Blue" Width="100" Height="80" ></Ellipse>
+        <Ellipse Fill="Yellow" Width="100" Height="80" ></Ellipse>
+    </WrapPanel>
+</Window>

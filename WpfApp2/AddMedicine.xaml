@@ -1,0 +1,38 @@
+﻿<Window x:Class="WpfApp2.AddMedicine"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="AddMedicine" Height="200" Width="350" Background="#FFBFBB8F">
+    <Window.Resources>
+        <BitmapImage x:Key="bitSaveImage" UriSource="images/save.jpg"/>
+        <Image x:Key="saveImage" x:Shared="false" Source="{StaticResource bitSaveImage}"/>
+        <BitmapImage x:Key="bitCancelImage" UriSource="images/cancel.jpg"/>
+        <Image x:Key="cancelImage" x:Shared="false" Opacity="0.9" Source="{StaticResource bitCancelImage}"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.35*"/>
+            <ColumnDefinition Width="0.35*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right">
+            <Label Content="Medicine Name" HorizontalAlignment="Center" Height="30"/>
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left">
+            <TextBox HorizontalAlignment="Center" Height="30" Width="165"/>
+        </Grid>
+        <Grid Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right">
+            <Label Content="Price" HorizontalAlignment="Center" Height="30" Width="100" HorizontalContentAlignment="Center"/>
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left">
+            <TextBox HorizontalAlignment="Center" Height="30" Width="165"/>
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left">
+            <Button Content="{StaticResource saveImage}" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center" BorderBrush="{x:Null}" Background="{x:Null}"/>
+            <Button Content="{StaticResource cancelImage}" Width="50" HorizontalAlignment="Center" BorderBrush="{x:Null}" Background="{x:Null}" Margin="80,0,0,0"/>
+        </Grid>
+    </Grid>
+</Window>

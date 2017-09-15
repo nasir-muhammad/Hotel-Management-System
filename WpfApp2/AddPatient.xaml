@@ -1,0 +1,53 @@
+﻿<Window x:Class="WpfApp2.AddPatient"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="AddPatient" Height="290" Width="450" Background="#FFB6B6B6">
+    <Window.Resources>
+        <BitmapImage x:Key="bitSaveImage" UriSource="images/save.jpg" />
+        <Image x:Key="saveImage" x:Shared="False"  Source="{StaticResource bitSaveImage}" />
+        <BitmapImage x:Key="bitCancelImage" UriSource="images/cancel.jpg"/>
+        <Image x:Key="cancelImage" x:Shared="False" Source="{StaticResource bitCancelImage}" Opacity="0.9"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.35*"/>
+            <ColumnDefinition Width="0.35*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right">
+            <Label Content="Name" HorizontalAlignment="Right" Width="100" VerticalAlignment="Center"/>
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" Width="150">
+            <TextBox Height="25" Width="150" HorizontalAlignment="Right" VerticalAlignment="Center" />
+        </Grid>
+        <Grid Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right">
+            <Label Content="Gender" HorizontalAlignment="Center" Width="100" VerticalAlignment="Center"/>
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left">
+            <RadioButton Content="Male" IsChecked="True" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <RadioButton Content="Female" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50,0,0,0"/>
+         </Grid>
+        <Grid Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right">
+            <Label Content="Date Of Birth" Width="100" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left">
+            <DatePicker Width="150" Height="25" VerticalAlignment="Center" />
+        </Grid>
+        <Grid Grid.Column="0" Grid.Row="3" HorizontalAlignment="Right">
+            <Label  Content="Category" Width="100" Height="25" VerticalAlignment="Center" />
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left">
+            <ComboBox Width="150" Height="25"/>
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="4" HorizontalAlignment="Left">
+            <Button Content="{StaticResource ResourceKey=cancelImage}" Width="50"  Margin="80,0,0,0" BorderBrush="{x:Null}" Background="{x:Null}"/>
+            <Button Content="{StaticResource ResourceKey=saveImage}" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center" BorderBrush="{x:Null}" Background="{x:Null}"/>
+        </Grid>
+    </Grid>
+</Window>
